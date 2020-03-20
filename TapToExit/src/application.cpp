@@ -2,6 +2,14 @@
 #include "window.h"
 #include <iostream>
 
+void Application::startApplication()
+{
+    if (Qapp != nullptr)
+    {
+        Qapp->exec();
+    }
+}
+
 Application::Application(int argc, char **argv)
 {
     std::cout << "Application has been created!" << std::endl;

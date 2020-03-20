@@ -20,10 +20,7 @@ class Window : public QWidget
 
   public:
     explicit Window(Application *appDriver, int _w = 480, int _h = 640);
-    const Application *getApplication() const
-    {
-        return appDriver;
-    }
+    const Application *getApplication() const;
   public slots:
     void onButtonClick();
 

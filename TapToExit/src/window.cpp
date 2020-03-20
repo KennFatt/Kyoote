@@ -8,7 +8,10 @@ Window::Window(Application *_appDriver, int _w, int _h)
     setFixedSize(weight, height);
 
     // Create a lable
-    mLabel = new QLabel("Label", this);
+    mLabel = new QLabel("Click button below!", this);
+    QFont *font = new QFont();
+    font->setPixelSize(22);
+    mLabel->setFont(*font);
     mLabel->setGeometry(weight / 4, height / 2, weight, 50);
     mLabel->show();
 
@@ -25,6 +28,11 @@ Window::Window(Application *_appDriver, int _w, int _h)
 
     // Connectiion Window::counterReached() -> QApplication::quit()
     connect(this, SIGNAL(counterReached()), getApplication()->getQtApplication(), SLOT(quit()));
+}
+
+const Application *Window::getApplication() const
+{
+    return appDriver;
 }
 
 void Window::onButtonClick()

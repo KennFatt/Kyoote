@@ -7,13 +7,7 @@ class Application
 {
   private:
     QApplication *Qapp;
-    void startApplication()
-    {
-        if (Qapp != nullptr)
-        {
-            Qapp->exec();
-        }
-    }
+    void startApplication();
 
   public:
     explicit Application(int, char **);
