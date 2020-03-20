@@ -1,9 +1,12 @@
 #include "window.h"
+
 #include <iostream>
 
 Window::Window(Application *_appDriver, int _w, int _h)
-    : QWidget(nullptr), appDriver(_appDriver), weight(_w), height(_h)
-{
+    : QWidget(nullptr)
+    , appDriver(_appDriver)
+    , weight(_w)
+    , height(_h) {
     // Set window's size
     setFixedSize(weight, height);
 
@@ -27,24 +30,21 @@ Window::Window(Application *_appDriver, int _w, int _h)
     connect(mButton, SIGNAL(clicked()), this, SLOT(onButtonClick()));
 
     // Connectiion Window::counterReached() -> QApplication::quit()
-    connect(this, SIGNAL(counterReached()), getApplication()->getQtApplication(), SLOT(quit()));
+    connect(this, SIGNAL(counterReached()),
+            getApplication()->getQtApplication(), SLOT(quit()));
 }
 
-const Application *Window::getApplication() const
-{
+const Application *Window::getApplication() const {
     return appDriver;
 }
 
-void Window::onButtonClick()
-{
-    if (mCounter <= 0)
-    {
+void Window::onButtonClick() {
+    if (mCounter <= 0) {
         emit counterReached();
     }
 
     mLabel->setText("Exit after: " + QString(std::to_string(mCounter).c_str()));
-    if (mCounter > 0)
-    {
+    if (mCounter > 0) {
         --mCounter;
     }
 }

@@ -1,16 +1,15 @@
 #ifndef __WINDOW_H_
 #define __WINDOW_H_
 
-#include "application.h"
-
 #include <QLabel>
 #include <QPushButton>
 #include <QWidget>
 
-class Window : public QWidget
-{
+#include "application.h"
+
+class Window : public QWidget {
     Q_OBJECT
-  private:
+private:
     Application *appDriver;
     QLabel *mLabel;
     QPushButton *mButton;
@@ -18,14 +17,14 @@ class Window : public QWidget
     int height;
     int mCounter;
 
-  public:
+public:
     explicit Window(Application *appDriver, int _w = 480, int _h = 640);
     const Application *getApplication() const;
-  public slots:
+public slots:
     void onButtonClick();
 
-  signals:
+signals:
     void counterReached();
 };
 
-#endif // __WINDOW_H_
+#endif    // __WINDOW_H_

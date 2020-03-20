@@ -1,17 +1,16 @@
 #include "application.h"
-#include "window.h"
+
 #include <iostream>
 
-void Application::startApplication()
-{
-    if (Qapp != nullptr)
-    {
+#include "window.h"
+
+void Application::startApplication() {
+    if (Qapp != nullptr) {
         Qapp->exec();
     }
 }
 
-Application::Application(int argc, char **argv)
-{
+Application::Application(int argc, char **argv) {
     std::cout << "Application has been created!" << std::endl;
 
     // Create new QApplication instance
@@ -25,18 +24,15 @@ Application::Application(int argc, char **argv)
     startApplication();
 }
 
-const QCoreApplication *Application::getQtApplication() const
-{
+const QCoreApplication *Application::getQtApplication() const {
     return QApplication::instance();
 }
 
-Application::~Application()
-{
+Application::~Application() {
     std::cout << "Application being destroyed!" << std::endl;
     delete Qapp;
 }
 
-void Application::QuitAction()
-{
+void Application::QuitAction() {
     std::cout << "QuitAction signal has been emmited!" << std::endl;
 }
